@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-
+    <link rel="stylesheet" href="css/login.css">
     <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@400..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css">
     <?php include('links.php'); ?>
@@ -23,16 +23,6 @@
 
                 <label>Password:</label>
                 <input type="password" id="pass" name="pass" required></br></br>
-
-                <label>Select Role:</label>
-                <div class="custom-dropdown">
-                    <select name="role" class="btn btn-info" required> 
-                        <option value="admin">Admin</option>
-                        <option value="manager">Manager</option>
-                        <option value="supervisor">Supervisor</option>
-                        <option value="employee">Employee</option>
-                    </select>
-                </div></br></br>
 
                 <input type="submit" id="btn" value="Login" name="submit"/> <br>
             </form>

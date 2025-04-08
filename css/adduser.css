@@ -1,0 +1,272 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Baloo Bhai 2', sans-serif;
+}
+
+/* Body Styling */
+body {
+    background-color: #7a7878;
+    display: flex;
+    overflow-x: hidden;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background-color: #111;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 20px;
+}
+
+.loglogo{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: 20px;
+    bottom: 160px;
+}
+
+/* Main Content */
+.content {
+    margin-left: 260px;
+    padding: 20px;
+    width: calc(100% - 260px);
+}
+
+.header {
+    display: flex;
+    height: 60px;
+    padding: 5px;
+    justify-content: flex-end;
+    border-radius: 10px;
+    background-color: #141414;
+    color: white;
+    
+}
+
+.header1 img {
+    display: flex;
+    max-width: 25px;
+    max-height: 25px;
+}  
+
+
+.sidebarh2 {
+    font-family: 'Baloo Bhai 2', sans-serif;
+    font-size: 40px;
+    color: rgb(127, 126, 126);
+    margin-top: 5px;
+    margin-left: 10px;
+    position: absolute;
+}
+
+.sidebar-header {
+    width: 20px;
+    height: 80px;  
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar ul li {
+    padding: 15px;
+    margin: 10px 0;
+    text-align: left;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: rgb(126, 126, 126);
+    display: block;
+    margin-left: 40px;
+}
+
+.sidebar ul li:hover,
+.sidebar ul li.active {
+    background-color: #333;
+}
+
+.logout {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    text-align: center;
+    opacity: 50%;
+}
+
+.logout-btn {
+    color: rgb(127, 126, 126);
+    text-decoration: none;
+    font-size: 16px;
+    background-color: #f44336;
+    padding: 5px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    bottom: 158px;
+    left: 55px;
+    position: absolute;
+}
+
+.fasfa-user-circle {
+    font-size: 16px;
+    color: rgb(126, 126, 126);
+    bottom: 200px;
+    left: 65px;
+    position: absolute;
+}
+
+.dashboard {
+    width: 25px;
+    height: 25px;
+    margin-top: 105px;
+    margin-left: 20px;
+    position: absolute;
+    opacity: 50%;
+}
+
+.menu {
+    width: 30px;
+    height: 30px;
+    margin-top: 20px;
+    margin-left: 170px;
+    position: absolute; 
+    opacity: 50%;
+}
+
+.userni {
+    width: 25px;
+    height: 25px;
+    margin-top: 170px;
+    margin-left: 20px;
+    position: absolute;
+    opacity: 50%;
+}
+
+.roleni {
+    width: 25px;
+    height: 25px;
+    margin-top: 235px;
+    margin-left: 20px;
+    position: absolute;
+    opacity: 50%;
+}
+
+.department {
+    width: 25px;
+    height: 25px;
+    margin-top: 315px;
+    margin-left: 20px;
+    position: absolute;
+    opacity: 50%;
+}
+
+.designation {
+    width: 25px;
+    height: 25px;
+    margin-top: 405px;
+    margin-left: 20px;
+    position: absolute;
+    opacity: 50%;
+}
+
+.profile1 {
+    width: 50px;
+    height: 50px;
+    margin-top: 680px;
+    margin-left: 10px;
+    position: absolute;
+    opacity: 50%;
+}
+
+.boxnisiya {
+    position: fixed;
+    top: 50%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    width: 420px;
+    font-family: Arial, sans-serif;
+}
+
+.boxnisiya h2 {
+    margin-top: 0;
+    font-size: 20px;
+    margin-bottom: 0px;
+}
+
+.boxnisiya p {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #555;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+input, select {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.button-container {
+    text-align: right;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 16px;
+    background-color: #555;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #333;
+}
+
+.Mcreate {
+    font-size: 16px;
+    font-weight: normal;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    height: 15px;
+    width: 15px;
+    color: #888;
+    cursor: pointer;
+    transition: color 0.3 ease;
+}
+
+.close-btn:hover {
+    background-color: #343434;
+}

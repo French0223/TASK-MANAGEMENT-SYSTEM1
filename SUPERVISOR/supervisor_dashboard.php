@@ -11,12 +11,12 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'supervisor') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Supervisor Dashboard</title>
-    <link rel="stylesheet" type="text/css" href="style.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/supervisor.css">
     <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
-    <!-- Sidebar -->
     <aside class="sidebar">
         <h2>Prodify.</h2>
         <ul>
@@ -27,11 +27,10 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'supervisor') {
         </ul>
         <div class="logout">
             <i class="fas fa-user-circle"></i> @Supervisor
-            <a href="logout.php" class="logout-btn">Logout</a>
+            <<a href="../logout.php" class="logout-btn">Logout</a>
         </div>
     </aside>
 
-    <!-- Main Content -->
     <main class="content">
         <header>
             <h1>Hello, Supervisor</h1>
@@ -43,7 +42,6 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'supervisor') {
             <a href="schedule.php" class="btn">Schedule</a>
         </section>
 
-        <!-- Calendar Section -->
         <section class="calendar">
             <iframe src="calendar.php"></iframe>
         </section>

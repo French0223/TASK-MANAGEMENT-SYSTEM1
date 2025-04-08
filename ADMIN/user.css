@@ -1,0 +1,480 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Baloo Bhai 2', sans-serif;
+}
+
+/* Body Styling */
+body {
+    background-color: #f4f4f4;
+    display: flex;
+    overflow-x: hidden;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background-color: #111;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 20px;
+}
+
+.loglogo{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: 20px;
+    bottom: 160px;
+}
+
+
+.sidebarh2 {
+    font-family: 'Baloo Bhai 2', sans-serif;
+    font-size: 40px;
+    color: white;
+    margin-top: 5px;
+    margin-left: 10px;
+    position: absolute;
+}
+
+.sidebar-header {
+    width: 20px;
+    height: 80px;  
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar ul li {
+    padding: 15px;
+    margin: 10px 0;
+    text-align: left;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: white;
+    display: block;
+    margin-left: 38px;
+}
+
+.sidebar ul li:hover,
+.sidebar ul li.active {
+    background-color: #333;
+}
+
+.logout {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    text-align: center;
+}
+
+.logout-btn {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    background-color: #f44336;
+    padding: 5px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    bottom: 158px;
+    left: 55px;
+    position: absolute;
+}
+
+.fasfa-user-circle {
+    font-size: 16px;
+    color: white;
+    bottom: 200px;
+    left: 65px;
+    position: absolute;
+}
+
+.bell {
+    width: 40px;
+    height: 40px;
+    left: 1675px;
+    margin-top: 6px;
+    margin-right: 30px;
+}
+
+.message {
+    width: 35px;
+    height: 35px;
+    left: 1750px;
+    margin-top: 5px;
+    margin-right: 40px;
+}
+
+
+.logout a:hover {
+    background-color: #d32f2f;
+}
+
+/* Main Content Styling */
+.content {
+    margin-left: 260px;
+    padding: 20px;
+    width: calc(100% - 260px);
+}
+
+.ins {
+    padding: 5px;
+    font-size: 13px;
+    color: #1f1e1f;
+    border: 0px solid #ffffff;
+    border-radius: 3px;
+    background-color: rgb(225, 225, 225);
+    height: 30px;
+    border-width: 1165px;
+    margin-left: 30px;
+    margin-top: 0px;
+    position: absolute;
+    border: 0px solid rgba(0, 0, 0, 0.3);
+    box-shadow: insert 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.header {
+    display: flex;
+    height: 60px;
+    justify-content: flex-end;
+    padding: 5px;
+    border-radius: 10px;
+    background-color: #141414;
+    color: white;
+    
+}
+
+.header img {
+    width: 40px;
+    height: 40px;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+.userm {
+    position: static;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 12px;
+    height: 100%;
+    max-width: 100%; /* Keeps it responsive */
+    margin: auto; /* Centers it */
+    position: fixed;
+    margin-left: 34%;
+    margin-top: 12%;
+    transform: translate(-50%, -50%);
+}
+
+.useradd {
+    position: absolute;
+    padding-left: 27px;
+    padding-top: 3px;
+    font-style: normal;
+    font-weight: 550px;
+    font-size: 12px;
+    line-height: 22px;
+    color: #ffffff;
+}
+
+.UserMa {
+    position:absolute;
+    left: 25px;
+    top: 13px;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 36px;
+    color: #242D2A;
+}
+
+.adduser {
+    position:absolute;
+    width: 85px;
+    height: 28px;
+    left: 1175px;
+    top: 62px;
+    background: #2f2f2f;
+    border-radius: 10px;   
+}
+
+
+.glass {
+    position:absolute;
+    margin-left: 7px;
+    margin-top: 45px;
+    width: 20px;
+    height: 20px;
+}
+
+h1.UserMa {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+
+.searchboarder input {
+    padding: 10px;
+    border-radius: 10px;
+    width: 1110px;
+    margin-top: 41px;
+    margin-left: 35px;
+    border: 1px solid #d7d5d5;
+    background: #f1f1f1;
+}
+
+.boarder {
+    width: 100%;
+    max-width: 1238px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    margin-top: 90px;
+    background: #ffffff;
+    margin-left: 7px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Table header styling */
+.table-header, .user-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Header text styling */
+.table-header p {
+    font-weight: bold;
+}
+
+/* Ensuring all items inside the row align properly */
+.user-row p {
+    margin: 0;
+    flex: 1;
+    text-align: center;
+}
+
+/* Making sure action buttons are spaced */
+.action2, .action3 {
+    flex: 0.5;
+}
+
+/* Styling Edit & Deactivate links */
+.action2 a {
+    background-color: #ff9999;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    position: absolute;
+    margin-left: 680px;
+    margin-top: -17px;
+    font-style: normal;
+    font-weight: 600px;
+    font-size: 15px;
+}
+
+.action3 a {
+    background-color: #6ca8ff;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    position: absolute;
+    margin-left: 180px;
+    margin-top: -17px;
+    font-style: normal;
+    font-weight: 600px;
+    font-size: 15px;
+}
+
+
+.user1 {
+    position: absolute;
+    margin-top: 18px;
+    margin-left: 15px;
+    font-style: normal;
+    font-weight: bold; 
+    font-size: 15px;
+    color: #000000;
+    line-height: 40px;
+} 
+
+.email1 {
+    position: absolute;
+    margin-top: 21px;
+    left: 335px;
+    font-style: normal;
+    font-weight: normal; 
+    font-size: 15px;
+    line-height: 40px;
+    color: #000000;
+} 
+
+.role1 {
+    position: absolute;
+    margin-top: 10px;
+    left: 658px;
+    font-style: normal;
+    font-weight: normal; 
+    font-size: 15px;
+    line-height: 10px;
+    color: #000000;
+}
+
+.userm {
+    width: 1291px;
+    height: 406.75px;
+    left: 425px;
+    top: 160px;
+    background: #ffffff;
+    box-shadow: 0px 4px 8px 3px rgba(0, 0, 0, 0.15), 0px 1px 3px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+
+.user-row p {
+    padding: 10px;
+}
+
+.addb {
+    width: 20px;
+    height: 20px;
+    margin-top: 4px;
+    margin-left: 5px;
+}
+
+
+.name {
+    position: absolute;
+    margin-left: 5px;
+    margin-top: -20px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 10px;
+    color: #000000;
+}
+
+.email {
+    position: absolute;
+    margin-left: 275px;
+    margin-top: -20px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 10px;
+    color: #000000;
+}
+
+.role {
+    position: absolute;
+    margin-left: 600px;
+    margin-top: -20px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 10px;
+    color: #000000;
+}
+
+
+.status1 {
+    position: absolute;
+    margin-left: 790px;
+    margin-top: -20px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 10px;
+    color: #000000;
+}
+
+.status {
+    position: absolute;
+    left: 850px;
+    margin-top: 8px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 10px;
+    color: #666867;
+}
+
+.action {
+    position: absolute;
+    margin-left: 980px;
+    margin-top: -20px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 10px;
+    color: #000000;
+}
+
+.dashboard {
+    width: 25px;
+    height: 25px;
+    margin-top: 105px;
+    margin-left: 20px;
+    position: absolute;
+}
+
+.menu {
+    width: 30px;
+    height: 30px;
+    margin-top: 20px;
+    margin-left: 170px;
+    position: absolute; 
+}
+
+.userni {
+    width: 25px;
+    height: 25px;
+    margin-top: 170px;
+    margin-left: 20px;
+    position: absolute;
+}
+
+.roleni {
+    width: 25px;
+    height: 25px;
+    margin-top: 235px;
+    margin-left: 20px;
+    position: absolute;
+}
+
+.department {
+    width: 25px;
+    height: 25px;
+    margin-top: 315px;
+    margin-left: 20px;
+    position: absolute;
+}
+
+.designation {
+    width: 25px;
+    height: 25px;
+    margin-top: 405px;
+    margin-left: 20px;
+    position: absolute;
+}
+
+.profile1 {
+    width: 50px;
+    height: 50px;
+    margin-top: 679px;
+    margin-left: 10px;
+    position: absolute;
+}
+
+
+

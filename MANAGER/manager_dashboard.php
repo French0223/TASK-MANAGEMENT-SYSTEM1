@@ -11,12 +11,12 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'manager') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manager Dashboard</title>
-    <link rel="stylesheet" type="text/css" href="style.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/manager.css">
     <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
-    <!-- Sidebar -->
     <aside class="sidebar">
         <h2>Prodify.</h2>
         <ul>
@@ -31,7 +31,6 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'manager') {
         </div>
     </aside>
 
-    <!-- Main Content -->
     <main class="content">
         <header>
             <h1>Hello, Manager</h1>
@@ -43,7 +42,6 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'manager') {
             <a href="reports.php" class="btn">View Reports</a>
         </section>
 
-        <!-- Calendar Section -->
         <section class="calendar">
             <iframe src="calendar.php"></iframe>
         </section>

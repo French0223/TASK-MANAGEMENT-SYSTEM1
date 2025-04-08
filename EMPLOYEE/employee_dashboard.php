@@ -11,7 +11,8 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'employee') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employee Dashboard</title>
-    <link rel="stylesheet" type="text/css" href="style.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/employee.css">
     <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -27,7 +28,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'employee') {
         </ul>
         <div class="logout">
             <i class="fas fa-user-circle"></i> @Employee
-            <a href="logout.php" class="logout-btn">Logout</a>
+            <a href="../logout.php" class="logout-btn">Logout</a>
         </div>
     </aside>
 
