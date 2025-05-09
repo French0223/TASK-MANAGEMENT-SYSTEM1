@@ -9,20 +9,24 @@ if (isset($_GET['id'])) {
     $user = mysqli_fetch_assoc($result);
 }
 
+// Handle form submission
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Get updated data from the form
-    $username = $_POST['username'];
-    $email = $_POST['email'];
-    $role = $_POST['role'];
-    $status = $_POST['status'];  // 1 = Active, 0 = Inactive
+    $username = mysqli_real_escape_string($conn, $_POST['username']);
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $role = mysqli_real_escape_string($conn, $_POST['role']);
+    $status = isset($_POST['status']) ? (int) $_POST['status'] : 0;
 
     // Update user in database
     $update_query = "UPDATE users SET username = '$username', email = '$email', role = '$role', status = $status WHERE id = $id";
-    mysqli_query($conn, $update_query);
-
-    // Redirect to user management page
-    header("Location: user_management.php");
-    exit();
+    if (mysqli_query($conn, $update_query)) {
+        // Redirect to user management page after success
+        header("Location: user_management.php");
+        exit();
+    } else {
+        // Handle error in case of failure
+        echo "Error: " . mysqli_error($conn);
+    }
 }
 ?>
 
@@ -31,13 +35,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add User</title>
+    <title>Edit User</title>
     <link rel="stylesheet" href="../css/edituser.css">
     <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@400..800&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
 </head>
 <body>
-
 
  <!-- Sidebar -->
  <aside class="sidebar">
@@ -54,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <ul>
             <li class="active"><i class="fas fa-home"></i> <a href="admin_dashboard.php">Dashboard</a></li>
             <li><i class="fas"></i> <a href="user_management.php">User Management</a></li>
-            <li><i class="fas"></i> <a href="role_assignment.php">Role Assignment</a></li>
+            <li><i class="fas"></i> <a href="role_assignment2.php">Role Assignment</a></li>
             <li><i class="fas"></i> <a href="department_management.php">Department<br />Management</a></li>
             <li><i class="fas fa-briefcase"></i> <a href="designation_management.php">Designation<br />Management<br /></a></li>
         </ul>
@@ -65,39 +68,42 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
     </aside>
 
-
     <!-- Main Content -->
     <main class="content">
-    <header>
-            <div class="header">
-            </div> 
-        <div class="boxnisiya">
-        <img src="https://th.bing.com/th/id/OIP.0r_Yptp1denh0qR_YHt-LAHaHa?rs=1&pid=ImgDetMain" class="close-btn" role="button" onclick="alert('Button clicked!')">
-            <h1>Edit User</h1>
-            <h3 class="Mcreate">Edit user to the system. Fill in all required fields </h3>
+        <header>
+            <div class="header"></div> 
+            <div class="boxnisiya">
+                <img src="https://th.bing.com/th/id/OIP.0r_Yptp1denh0qR_YHt-LAHaHa?rs=1&pid=ImgDetMain" class="close-btn" role="button" onclick="window.location.href='user_management.php';">
+                <h1>Edit User</h1>
+                <h3 class="Mcreate">Edit user in the system. Fill in all required fields.</h3>
 
-<f method="POST" action="edit_user.php?id=<?php echo $user['id']; ?>">
-    <div class="form-group"> 
-        <input type="text" name="username" value="<?php echo htmlspecialchars($user['username']); ?>" required>
-    </div>
-    <div class="form-group">    
-         <input type="email" name="email" value="<?php echo htmlspecialchars($user['email']); ?>" required>
-    </div>
-    <div class="form-group">
-    <select name="role">
-        <option value="admin" <?php if ($user['role'] == 'admin') echo 'selected'; ?>>Admin</option>
-        <option value="user" <?php if ($user['role'] == 'user') echo 'selected'; ?>>User</option>
-    </select>
-    </div>
-    <div class="form-group">
-    <select name="status">
-        <option value="1" <?php if ($user['status'] == 1) echo 'selected'; ?>>Active</option>
-        <option value="0" <?php if ($user['status'] == 0) echo 'selected'; ?>>Inactive</option>
-    </select>
-    </div>
+                <!-- Form to edit user -->
+                <form method="POST" action="edit_user.php?id=<?php echo $user['id']; ?>">
+                    <div class="form-group"> 
+                        <input type="text" name="username" value="<?php echo htmlspecialchars($user['username']); ?>" required>
+                    </div>
+                    <div class="form-group">    
+                         <input type="email" name="email" value="<?php echo htmlspecialchars($user['email']); ?>" required>
+                    </div>
+                    <div class="form-group">
+                        <select name="role">
+                            <option value="admin" <?php if ($user['role'] == 'admin') echo 'selected'; ?>>Admin</option>
+                            <option value="manager" <?php if ($user['role'] == 'manager') echo 'selected'; ?>>Manager</option>
+                            <option value="supervisor" <?php if ($user['role'] == 'supervisor') echo 'selected'; ?>>Supervisor</option>
+                            <option value="employee" <?php if ($user['role'] == 'employee') echo 'selected'; ?>>Employee</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                    <select name="status">
+                        <option value="1" <?php if ($user['status'] == 1) echo 'selected'; ?>>Active</option>
+                        <option value="0" <?php if ($user['status'] == 0) echo 'selected'; ?>>Inactive</option>
+                    </select>
+                    </div>
 
-    <button type="submit">Update User</button>
-</form>
-</div>
-</header>
-    </main>
+                    <button type="submit">Update User</button>
+                </form>
+            </div>
+        </header>
+    </main> 
+</body>
+</html>

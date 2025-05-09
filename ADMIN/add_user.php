@@ -5,7 +5,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $email = $_POST['email'];
     $role = $_POST['role'];
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT); // Secure the password
+    $password = $_POST['password']; 
 
     $query = "INSERT INTO users (username, email, password, role, status) 
               VALUES ('$username', '$email', '$password', '$role', 1)"; // Default status is active
@@ -18,6 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -45,11 +46,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <img src="../images/8665306_circle_user_icon.png" class="profile1">
         </div>
         <ul>
-            <li class="active"><i class="fas fa-home"></i> <a href="admin_dashboard.php">Dashboard</a></li>
-            <li><i class="fas"></i> <a href="user_management.php">User Management</a></li>
-            <li><i class="fas"></i> <a href="role_assignment.php">Role Assignment</a></li>
-            <li><i class="fas"></i> <a href="department_management.php">Department<br />Management</a></li>
-            <li><i class="fas fa-briefcase"></i> <a href="designation_management.php">Designation<br />Management<br /></a></li>
+            <li><i class="fas fa-home"></i> <a>Dashboard</a></li>
+            <li><i class="fas"></i> <a>User Management</a></li>
+            <li><i class="fas"></i> <a>Role Assignment</a></li>
+            <li><i class="fas"></i> <a>Department<br />Management</a></li>
+            <li><i class="fas fa-briefcase"></i> <a>Designation<br />Management<br /></a></li>
         </ul>
         <div class="logout">
             <i class="fasfa-user-circle">@Admin</i>

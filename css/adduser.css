@@ -88,11 +88,6 @@ body {
     margin-left: 40px;
 }
 
-.sidebar ul li:hover,
-.sidebar ul li.active {
-    background-color: #333;
-}
-
 .logout {
     position: absolute;
     bottom: 20px;
