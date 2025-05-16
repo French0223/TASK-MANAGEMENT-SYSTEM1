@@ -1,18 +1,10 @@
-<?php
-session_start();
-if (!isset($_SESSION['role']) || $_SESSION['role'] != 'manager') {
-    header("Location: index.php");
-    exit();
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="manager_dash.css">
+    <link rel="stylesheet" href="user_manager.css">
     <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@400..800&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
 </head>
@@ -42,8 +34,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'manager') {
         </div>
     </aside>
 
-    <!-- Main Content -->
-<main class="content">
+    <main class="content">
     <header>
     <div class="header">
         <img src="../images/211694_bell_icon.png" class="bell" role="button" onclick="window.location.href='../ADMIN/notification.php'">
@@ -51,44 +42,42 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'manager') {
     </div>
     </header>
 
-    <h1 class="hello-admin">Hello, <?php echo htmlspecialchars($_SESSION['username']); ?></h1>
-    <section class="dashboard-cards">
-         <div class="card">
-            <h2>Active Projects</h2>
-            <h3>Projects ahead of schedule</h3>
-            <p>0</p>
-            <img src="https://cdn4.iconfinder.com/data/icons/48-bubbles/48/12.File-1024.png">
-        </div>
-        <div class="card">
-            <h2>Pending Task</h2>
-            <h3>Tasks require attention</h3>
-            <p>0</p>
-            <img src="https://cdn4.iconfinder.com/data/icons/basic-ui-2-line/32/clock-time-ticker-times-hour-512.png">
-        </div>
-        <div class="card">
-            <h2>Team Members</h2>
-            <h3>Across all projects</h3>
-            <p>0</p>
-            <img src="https://cdn0.iconfinder.com/data/icons/users-android-l-lollipop-icon-pack/24/group2-512.png">
-         </div>
-    </section>  
+        <!-- User List Section -->
+        <section class="user-list scrollable-content">
+            <h2>
+                <img src="../images/8665306_circle_user_icon.png" alt="User Icon" class="user-icon" />
+                Users
+            </h2>
+            <div class="search-bar">
+                <img src="../images/5402443_search_find_magnifier_magnifying_magnifying glass_icon.png" alt="Search Icon" class="search-icon" />
+                <input id="departmentSearch" class="ins" type="text" placeholder="Search users...">
+            </div>
 
-   <!-- Recent User Activity -->
-<div class="recent-activity-wrapper">
-<section class="recent-activity-panel">
-    <div class="recent-activity-header">
-        <img src="https://cdn4.iconfinder.com/data/icons/essentials-71/24/011_-_Calendar-512.png" alt="User Icon" />
-        <h2>Upcoming deadline</h2>
-    </div>
-    <p>No recent user activity</p>
-</section>
-
-<section class="recent-activity-panel2">
-    <h2><img src="https://cdn3.iconfinder.com/data/icons/social-media-2125/80/timeline-512.png">Team Activity</h2>
-    <p>No recent user activity</p>
-</section>
-</div>
-</main>
-
-</body>
-</html>
+            <table border="0">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Role</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Frenchie</td>
+                        <td>Admin</td>
+                        <td><img src="https://cdn4.iconfinder.com/data/icons/glyphs/24/icons_email-512.png" alt="Message Icon" class="message-icon" /></td>
+                    </tr>
+                    <tr>
+                        <td>Precious</td>
+                        <td>Manager</td>
+                        <td><img src="https://cdn4.iconfinder.com/data/icons/glyphs/24/icons_email-512.png" alt="Message Icon" class="message-icon" /></td>
+                    </tr>
+                    <tr>
+                        <td>Christian</td>
+                        <td>User</td>
+                        <td><img src="https://cdn4.iconfinder.com/data/icons/glyphs/24/icons_email-512.png" alt="Message Icon" class="message-icon" /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        </main>

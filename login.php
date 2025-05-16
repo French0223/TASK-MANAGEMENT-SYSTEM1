@@ -2,6 +2,8 @@
 include("connection.php"); 
 session_start();  
 
+include("ADMIN/notification_functions.php");
+
 if (isset($_POST['submit'])) {     
     $username = $_POST['user'];     
     $password = $_POST['pass'];      
@@ -18,12 +20,16 @@ if (isset($_POST['submit'])) {
         $_SESSION['username'] = $row['username'];          
         $_SESSION['role'] = $row['role'];          
         
+        // Add login notification
+        addNotification($conn, $row['id'], "Logged into the system");
+        
         // Update the last login time
         $update_login = "UPDATE users SET last_login = NOW() WHERE id = " . $row['id'];
         mysqli_query($conn, $update_login);
         
         // Redirect based on role         
         switch ($row['role']) {             
+
             case 'admin':                 
                 header("Location: ADMIN/admin_dashboard.php");                 
                 break;             

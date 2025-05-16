@@ -11,6 +11,26 @@
     <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@400..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css">
     <?php include('links.php'); ?>
+    <!-- Font Awesome for eye icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .password-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .password-container input[type="password"],
+        .password-container input[type="text"] {
+            width: 100%;
+            padding-right: 35px; /* space for the icon */
+        }
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            cursor: pointer;
+            color: #555;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -22,11 +42,27 @@
                 <input type="text" id="user" name="user" required></br></br>
 
                 <label>Password:</label>
-                <input type="password" id="pass" name="pass" required></br></br>
+                <div class="password-container">
+                    <input type="password" id="pass" name="pass" required>
+                    <i class="fa-solid fa-eye toggle-password" id="togglePass"></i>
+                </div>
+                </br></br>
 
                 <input type="submit" id="btn" value="Login" name="submit"/> <br>
             </form>
         </div>
     </div>
+
+    <script>
+        const passInput = document.getElementById('pass');
+        const togglePass = document.getElementById('togglePass');
+
+        togglePass.addEventListener('click', () => {
+            const type = passInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passInput.setAttribute('type', type);
+            togglePass.classList.toggle('fa-eye');
+            togglePass.classList.toggle('fa-eye-slash');
+        });
+    </script>
 </body>
 </html>

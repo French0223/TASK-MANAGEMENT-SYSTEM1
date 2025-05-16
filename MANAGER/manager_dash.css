@@ -135,15 +135,7 @@ body {
 .department {
   width: 25px;
   height: 25px;
-  margin-top: 315px;
-  margin-left: 20px;
-  position: absolute;
-}
-
-.designation {
-  width: 25px;
-  height: 25px;
-  margin-top: 405px;
+  margin-top: 300px;
   margin-left: 20px;
   position: absolute;
 }
@@ -161,6 +153,39 @@ body {
   margin-left: 260px;
   padding: 20px;
   width: calc(100% - 260px);
+}
+.recent-activity-wrapper {
+  display: flex;
+  gap: 20px;
+}
+.recent-activity-panel {
+  top: 50px;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  width: 48%;
+  margin-left: 0;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  position: relative;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.recent-activity-panel2 {
+  top: 50px;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  width: 48%;
+  margin-left: 0;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  position: relative;
+  max-height: 400px;
+  overflow-y: auto;
 }
 
 /*header*/
@@ -244,8 +269,19 @@ body {
     }
 }
 
-.dashboard-cards h3 {
+.dashboard-cards h2 {
     margin-top: -10px;
+    margin-bottom: 10px;
+    font-style: normal;
+    font-weight: 630;
+    font-size: 20px;
+    line-height: 24px;
+    color: #1d1d1d;
+    text-align: left;
+}
+
+.dashboard-cards h3 {
+    margin-top: -15px;
     margin-bottom: 10px;
     font-style: normal;
     font-weight: 600;
@@ -259,6 +295,8 @@ body {
     text-align: left;
     font-size: 40px;
     font-weight: bold;
+    margin-left: 50px;
+    margin-top: -10px;
 }
 
 .card hr {
@@ -274,7 +312,7 @@ body {
     display: block;
     margin-left: auto;
     margin-right: 0;
-    margin-top: -75px;
+    margin-top: -80px;
 }
 
 .box {
@@ -388,7 +426,7 @@ margin: 0;
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-  max-width: 1500px;
+  width: 43%;
   margin-left: 100px;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -397,12 +435,47 @@ margin: 0;
   overflow-y: auto;
 }
 
+.recent-activity-panel2 {
+  top: 50px;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  width: 43%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  position: relative;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.recent-activity-wrapper img {
+  height: 40px;
+  width: 40px;
+  display: inline-block;
+  margin: 0 10px 0 0;
+  vertical-align: middle;
+  margin-top: 0;
+}
+
+.recent-activity-header {
+  display: flex;
+  align-items: center;
+}
+
 .user-list {
   max-height: 400px;
   overflow-y: auto;
 }
 
 .recent-activity-panel h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: -0px;
+  color: #333;
+}
+
+.recent-activity-panel2 h2 {
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 20px;

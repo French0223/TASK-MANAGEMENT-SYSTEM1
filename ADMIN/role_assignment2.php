@@ -67,12 +67,17 @@ $result = $conn->query($sql);
 
     <img src="../images/3643745_human_man_people_person_profile_icon.png" class="human">
 
-    <div class="minib">
+    <!-- Search bar added -->
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search users..." />
+    </div>
+
+    <div class="minib" id="userList">
         <?php while ($row = $result->fetch_assoc()): ?>
-            <div class="box1">
+            <div class="box1" role="button" onclick="window.location.href='edit_role.php?user_id=<?= $row['id'] ?>'" style="cursor:pointer;">
                 <div class="top-row">
                     <p class="U"><?= htmlspecialchars($row['username']) ?></p>
-                    <div class="supervisor" role="button" onclick="window.location.href='edit_role.php?user_id=<?= $row['id'] ?>'">
+                    <div class="supervisor">
                         <img src="../images/9036002_shield_sharp_icon.png" class="superb">
                         <p class="S"><?= htmlspecialchars($row['role_name']) ?></p>
                     </div>
@@ -88,6 +93,26 @@ $result = $conn->query($sql);
     <p class="w">Select User to assign roles and permission</p>
 </div>
 </main>
+<script>
+document.getElementById('searchInput').addEventListener('input', function() {
+    const filter = this.value.toLowerCase();
+    const userList = document.getElementById('userList');
+    const users = userList.getElementsByClassName('box1');
+
+    Array.from(users).forEach(function(user) {
+        const username = user.querySelector('.U').textContent.toLowerCase();
+        const role = user.querySelector('.S').textContent.toLowerCase();
+        const email = user.querySelector('.G').textContent.toLowerCase();
+        const department = user.querySelector('.Eg').textContent.toLowerCase();
+
+        if (username.includes(filter) || role.includes(filter) || email.includes(filter) || department.includes(filter)) {
+            user.style.display = '';
+        } else {
+            user.style.display = 'none';
+        }
+    });
+});
+</script>
 </body>
 </html>
 <?php

@@ -39,8 +39,8 @@
 <main class="content">
     <header>
         <div class="header">
-            <img src="../images/211694_bell_icon.png" class="bell" role="button" onclick="alert('Button clicked!')">
-            <img src="../images/8678233_message_communication_chat_icon.png" class="message" role="button" onclick="alert('Button clicked!')">
+            <img src="../images/211694_bell_icon.png" class="bell" role="button" onclick="window.location.href='../ADMIN/notification.php'">
+            <img src="../images/8678233_message_communication_chat_icon.png" class="message" role="button" onclick="window.location.href='../ADMIN/messages.php'">
         </div>
 
         <!-- User List Section -->

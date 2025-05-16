@@ -66,7 +66,7 @@ $notif_result = $notif_query->get_result();
             <li><i class="fas fa-briefcase"></i> <a href="designation_management.php">Designation<br />Management<br /></a></li>
         </ul>
         <div class="logout">
-            <i class="fas fa-user-circle">@Admin</i>
+            <i class="fas fa-user-circle">@<?php echo htmlspecialchars($_SESSION['username']); ?></i>
             <a href="logout.php" class="logout-btn">Logout</a>
             <img src="../images/7853741_logout_kashifarif_exit_out_close_icon.png" class="loglogo" />
         </div>
@@ -75,8 +75,8 @@ $notif_result = $notif_query->get_result();
     <main class="content">
         <header>
         <div class="header">
-        <img src="../images/8678233_message_communication_chat_icon.png" class="message" role="button" onclick="alert('Button clicked!')">
-        <img src="../images/211694_bell_icon.png" class="bell" role="button" onclick="alert('Button clicked!')">
+        <img src="../images/211694_bell_icon.png" class="bell" role="button" onclick=""window.location.href='../ADMIN/notification.php'">
+        <img src="../images/8678233_message_communication_chat_icon.png" class="message" role="button" onclick="window.location.href='../ADMIN/messages.php'">
         </div>
         
         <main>
@@ -104,4 +104,3 @@ $notif_result = $notif_query->get_result();
 
 </body>
 </html>
-

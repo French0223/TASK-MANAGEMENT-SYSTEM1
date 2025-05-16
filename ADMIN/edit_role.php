@@ -5,6 +5,37 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+// Initialize variables
+$selected_user = null;
+$selected_role = null;
+$message = "";
+
+// Handle POST request to update role
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['user_id']) && isset($_POST['role'])) {
+    $user_id = intval($_POST['user_id']);
+    $new_role = $conn->real_escape_string($_POST['role']);
+    $update_sql = "UPDATE users SET role = '$new_role' WHERE id = $user_id";
+    if ($conn->query($update_sql) === TRUE) {
+        $message = "Role updated successfully.";
+        // Redirect to avoid form resubmission
+        header("Location: edit_role.php?user_id=$user_id&updated=1&success=1");
+        exit();
+    } else {
+        $message = "Error updating role: " . $conn->error;
+    }
+}
+
+// Handle GET request to load selected user
+if (isset($_GET['user_id'])) {
+    $user_id = intval($_GET['user_id']);
+    $user_sql = "SELECT id, username, role FROM users WHERE id = $user_id LIMIT 1";
+    $user_result = $conn->query($user_sql);
+    if ($user_result && $user_result->num_rows > 0) {
+        $selected_user = $user_result->fetch_assoc();
+        $selected_role = $selected_user['role'];
+    }
+}
+
 // Get users and their roles, handling missing departments
 $sql = "SELECT users.id, users.username, users.email, users.role AS role_name, 
         IFNULL(departments.name, 'No Department') AS department_name
@@ -68,10 +99,10 @@ $result = $conn->query($sql);
 
     <div class="minib">
         <?php while ($row = $result->fetch_assoc()): ?>
-            <div class="box1">
+            <div class="box1" role="button" onclick="window.location.href='edit_role.php?user_id=<?= $row['id'] ?>'" style="cursor:pointer;">
                 <div class="top-row">
                     <p class="U"><?= htmlspecialchars($row['username']) ?></p>
-                    <div class="supervisor" role="button" onclick="window.location.href='edit_role.php?user_id=<?= $row['id'] ?>'">
+                    <div class="supervisor">
                         <img src="../images/9036002_shield_sharp_icon.png" class="superb">
                         <p class="S"><?= htmlspecialchars($row['role_name']) ?></p>
                     </div>
@@ -81,19 +112,62 @@ $result = $conn->query($sql);
                 </div>
         <?php endwhile; ?>
     </div>    
-                <div class="button-container">
-                    <button class="cancel" type="cancel">cancel</button>
-                    <button class="Save" type="submit">Save changes</button>
-                </div>
 
-                <div class="choices">
-                    <button class="Save" type="submit">Admin</button>
-                    <button class="Save" type="submit">Supervisor</button>
-                    <button class="Save" type="submit">Manager</button>
-                    <button class="Save" type="submit">Employee</button>
-                </div>
+    <?php if ($selected_user): ?>
+    <form method="POST" action="edit_role.php" class="role-form">
+        <h3>Editing Role for: <?= htmlspecialchars($selected_user['username']) ?></h3>
+        <input type="hidden" name="user_id" value="<?= $selected_user['id'] ?>">
+        <div class="choices">
+            <?php
+            $roles = ['Admin', 'Supervisor', 'Manager', 'Employee'];
+            foreach ($roles as $role) {
+                $active_class = ($role === $selected_role) ? 'selected-role' : '';
+                echo "<button type='button' class='Save $active_class' onclick=\"selectRole(this, '$role')\">$role</button>";
+            }
+            ?>
+        </div>
+        <input type="hidden" name="role" id="role_input" value="<?= htmlspecialchars($selected_role) ?>">
+        <div class="button-container">
+<button type="button" class="cancel" onclick="window.location.href='role_assignment2.php'">Return</button>
+            <button type="submit" class="Save">Save</button>
+        </div>
+    </form>
+    <?php endif; ?>
 </div>
+<script>
+function selectRole(button, role) {
+    // Remove selected-role class from all role buttons
+    const buttons = document.querySelectorAll('.choices button');
+    buttons.forEach(btn => btn.classList.remove('selected-role'));
+    // Add selected-role class to clicked button
+    button.classList.add('selected-role');
+    // Set hidden input value
+    document.getElementById('role_input').value = role;
+}
+</script>
 </main>
+<script>
+function filterUsers() {
+    const input = document.getElementById('searchInput');
+    const filter = input.value.toLowerCase();
+    const boxes = document.querySelectorAll('.minib .box1');
+    boxes.forEach(box => {
+        const username = box.querySelector('.U').textContent.toLowerCase();
+        if (username.includes(filter)) {
+            box.style.display = '';
+        } else {
+            box.style.display = 'none';
+        }
+    });
+}
+</script>
+<style>
+/* Highlight selected role button */
+.selected-role {
+    background-color: #4CAF50 !important;
+    color: white !important;
+}
+</style>
 </body>
 </html>
 <?php

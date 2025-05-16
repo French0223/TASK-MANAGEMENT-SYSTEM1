@@ -72,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
 
         <!-- User List Section -->
-        <section class="user-list">
+        <section class="user-list scrollable-content">
             <h2>Department Management</h2>
             <div class="bastaword-wrapper">
                 <h3 class="bastaword">Create and manage departments in your organization</h3>
@@ -94,12 +94,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <th>Actions</th>
                 </tr>
                 <?php
-                $result = mysqli_query($conn, "SELECT * FROM departments");
+                $result = mysqli_query($conn, "SELECT departments.*, COUNT(users.id) AS employee_count FROM departments LEFT JOIN users ON departments.id = users.department_id GROUP BY departments.id");
                 while ($row = mysqli_fetch_assoc($result)) {
                     echo "<tr>
                         <td data-label='Department Name'>{$row['name']}</td>
                         <td data-label='Description'>{$row['description']}</td>
-                        <td data-label='Employees'>-</td> <!-- You can update this later to count users in that department -->
+                        <td data-label='Employees'>{$row['employee_count']}</td>
                         <td data-label='Created At'>{$row['created_at']}</td>
                          <td data-label='Actions'>
                             <div class='action-buttons'>

@@ -37,13 +37,12 @@ $date_column = mysqli_num_rows($check_column) > 0 ? 'last_login' : 'created_at';
 $user_activity_query = "SELECT id, username FROM users ORDER BY $date_column DESC LIMIT 5";
 $user_activity_result = mysqli_query($conn, $user_activity_query);
 
-// Original activity query for reference (keeping this in case you need to revert)
 $recent_activity_query = "
     SELECT 
-        u.username, l.activity, l.activity_time
-    FROM user_activity_log l
-    JOIN users u ON l.user_id = u.id
-    ORDER BY l.activity_time DESC
+        u.username, n.message AS activity, n.created_at AS activity_time
+    FROM notifications n
+    JOIN users u ON n.user_id = u.id
+    ORDER BY n.created_at DESC
     LIMIT 10
 ";
 $result = mysqli_query($conn, $recent_activity_query);
@@ -151,20 +150,12 @@ $notif_count = mysqli_fetch_assoc($notif_count_result)['unread'];
     mysqli_data_seek($result, 0);
     
     if (mysqli_num_rows($result) > 0) {
-        $count = 0;
         while ($row = mysqli_fetch_assoc($result)) {
-            $count++;
-            // For users 1, 3, 5 - show Update button
-            // For users 2, 4 - show Login button
-            $button_type = ($count % 2 == 0) ? 'Login' : 'Update';
-            
             echo '<div class="activity-row">';
             echo '  <div class="activity-info">';
             echo '    <div class="user-name">'. htmlspecialchars($row['username']) .' '. htmlspecialchars($row['activity']) .'</div>';
+            echo '    <div class="activity-date">'. date("M d, Y H:i", strtotime($row['activity_time'])) .'</div>';
             echo '    <div class="activity-subtitle">Recent User Activity</div>';
-            echo '  </div>';
-            echo '  <div class="activity-action">';
-            echo '    <button class="btn-'. strtolower($button_type) .'">'. $button_type .'</button>';
             echo '  </div>';
             echo '</div>';
         }
